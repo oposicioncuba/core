@@ -1,0 +1,16 @@
+*.pyc
+*.sqlite3
+*.orig
+*.DS_Store
+*.db
+*.mo
+*.log
+/media/
+CACHE
+/.idea
+/.settings/
+/build/
+.pydevproject
+/local_settings.py
+/atlassian-ide-plugin.xml
+/.project
