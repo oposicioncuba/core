@@ -14,3 +14,5 @@ CACHE
 /local_settings.py
 /atlassian-ide-plugin.xml
 /.project
+
+node_modules/
