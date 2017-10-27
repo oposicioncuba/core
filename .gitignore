@@ -15,4 +15,8 @@ CACHE
 /atlassian-ide-plugin.xml
 /.project
 
-node_modules/
+node_modules
+
+*.js
+*.css
+*.map

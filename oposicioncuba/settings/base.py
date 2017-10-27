@@ -38,12 +38,16 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'apps.core',
+    'apps.frontend',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.facebook',
+
+    'pipeline',
+    'bootstrap3',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -179,3 +183,39 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 SITE_ID = 1
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+PIPELINE = {
+    'PIPELINE_ENABLED': True,
+    'STYLESHEETS': {
+        'libs': {
+            'source_filenames': (
+                'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css',  # noqa
+            ),
+            'output_filename': 'css/libs.css'
+        }
+    },
+    'JAVASCRIPT': {
+        'jquery': {
+            'source_filenames': (
+                'node_modules/jquery/dist/jquery.js'
+            ),
+            'output_filename': 'js/jquery.js'
+        },
+        'libs': {
+            'source_filenames': (
+                'node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.js',  # noqa
+                'node_modules/vue/dist/js/vue.js',
+                'coffee/init_bootstrap_material_design.js',
+            ),
+            'output_filename': 'js/libs.js'
+        }
+    }
+}
