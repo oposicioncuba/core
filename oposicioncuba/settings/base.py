@@ -138,6 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -184,7 +185,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SITE_ID = 1
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -193,11 +194,16 @@ STATICFILES_FINDERS = (
 )
 
 PIPELINE = {
-    'PIPELINE_ENABLED': True,
+    'PIPELINE_ENABLED': False,
+    'PIPELINE_COLLECTOR_ENABLED': True,
+    'CSS_COMPRESSOR': 'pipeline.compressors.yui.YUICompressor',
+    'JS_COMPRESSOR': 'pipeline.compressors.closure.ClosureCompressor',
+    'CLOSURE_BINARY': 'closure-compiler',
     'STYLESHEETS': {
         'libs': {
             'source_filenames': (
                 'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css',  # noqa
+                'sass/main.css',
             ),
             'output_filename': 'css/libs.css'
         }
@@ -205,17 +211,27 @@ PIPELINE = {
     'JAVASCRIPT': {
         'jquery': {
             'source_filenames': (
-                'node_modules/jquery/dist/jquery.js'
+                'node_modules/jquery/dist/jquery.js',
             ),
             'output_filename': 'js/jquery.js'
         },
         'libs': {
             'source_filenames': (
                 'node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.js',  # noqa
-                'node_modules/vue/dist/js/vue.js',
+                'node_modules/vue/dist/vue.js',
                 'coffee/init_bootstrap_material_design.js',
             ),
             'output_filename': 'js/libs.js'
+        },
+        'profile': {
+            'source_filenames': (
+                'coffee/controllers/base.js',
+                'coffee/controllers/profile/photo.js',
+                'coffee/controllers/profile/info.js',
+                'coffee/controllers/profile/address.js',
+                'coffee/controllers/profile/profile.js',
+            ),
+            'output_filename': 'js/profile.js'
         }
     }
 }

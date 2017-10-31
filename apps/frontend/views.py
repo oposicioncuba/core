@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 
 
 class RedirectBasedOnCredentialsView(RedirectView):
@@ -8,3 +8,7 @@ class RedirectBasedOnCredentialsView(RedirectView):
             return reverse('profile')
         else:
             return reverse('account_login')
+
+
+class ProfileView(TemplateView):
+    template_name = 'frontend/profile.html'

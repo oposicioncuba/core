@@ -1,22 +1,51 @@
 {% extends 'frontend/base.html' %}
 {% load i18n %}
+{% load bootstrap3 %}
+{% load socialaccount %}
 
 {% block title %} {% trans 'Log in' %} {% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-sm-4 col-lg-4"></div>
-            <div class="col-md-4 col-sm-4 col-lg-4">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{% trans 'Cuban opossition' %}</h1>
+                    </div>
+                </div>
+
+                <hr/>
+
+
                 <h3> {% trans 'Log in' %}</h3>
 
                 <form>
-                    <div class="form-group">
-                        input.form-control
+                    {% bootstrap_form form %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary right">
+                                {% trans 'Ok' %}
+                            </button>
+                        </div>
                     </div>
                 </form>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <legend>{% trans 'or log in with the social networks' %}</legend>
+                        <a href="{% provider_login_url 'google' %}">
+                            <button class="btn btn-danger">
+                                <i class="fa fa-google"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-lg-4"></div>
+            <div class="col-md-4"></div>
         </div>
     </div>
 {% endblock %}
+
+{% block page %} login {% endblock %}

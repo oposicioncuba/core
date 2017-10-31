@@ -2,5 +2,7 @@ Django==1.11.6
 django-model-utils==3.0.0
 django_mptt==0.8.7
 django-allauth==0.33.0
-django-pipline==1.6.13
+django-pipeline==1.6.13
 django-bootstrap3==9.1.0
+django-npm==1.0.0
+pillow==4.3.0

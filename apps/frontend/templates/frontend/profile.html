@@ -1,0 +1,48 @@
+{% extends 'frontend/base.html' %}
+{% load i18n %}
+{% load pipeline %}
+
+{% block page %} profile {% endblock %}
+
+{% block title %} {% trans 'Profile' %} {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <profile_photo></profile_photo>
+            </div>
+            <div class="col-md-4">
+                <profile_info></profile_info>
+            </div>
+            <div class="col-md-4">
+                <profile_address></profile_address>
+            </div>
+        </div>
+    </div>
+
+    <script id="profile_photo_tmpl" language="template/vuejs">
+        <div>
+            <template v-if="image">
+                <img :src="image" alt="">
+            </template>
+            <template v-else>
+                <span class="fa fa-photo fa-5x right" aria-hidden="true"></span>
+                <input type="file" accept="image/*" @change="uploadFile($event.target.files)">
+            </template>
+        </div>
+
+    </script>
+
+    <script id="profile_info_tmpl" language="template/vuejs">
+        <p>Info</p>
+    </script>
+
+    <script id="profile_address_tmpl" language="template/vuejs">
+        <p>Address</p>
+    </script>
+{% endblock %}
+
+{% block js %}
+    {% javascript 'profile' %}
+{% endblock %}

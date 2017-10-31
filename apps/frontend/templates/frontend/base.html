@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% trans 'Oposción Cuba' %} | {% block title %} {% endblock %}</title>
+    <title>{% trans 'Cuban opossition' %} | {% block title %} {% endblock %}</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,11 +15,12 @@
 
     {% block css %}{% endblock %}
 </head>
-<body>
+<body class="{% block page %} {% endblock %}">
     {% block content %}{% endblock %}
 
     {% javascript 'jquery' %}
     <script src="https://unpkg.com/popper.js@1.12.5/dist/umd/popper.js" integrity="sha384-KlVcf2tswD0JOTQnzU4uwqXcbAy57PvV48YUiLjqpk/MJ2wExQhg9tuozn5A1iVw" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/65c228329f.js"></script>
     {% javascript 'libs' %}
 
     {% block js %}{% endblock %}
