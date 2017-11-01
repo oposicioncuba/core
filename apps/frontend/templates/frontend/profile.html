@@ -39,7 +39,19 @@
     </script>
 
     <script id="profile_address_tmpl" language="template/vuejs">
-        <p>Address</p>
+        <dl class="dl-horizontal">
+            <fieldset>
+                <legend>{% trans 'Address' %}</legend>
+                <dt>{% trans 'Street:' %}</dt>
+                <dd></dd>
+                <dt>{% trans 'Number:' %}</dt>
+                <dd></dd>
+                <dt>{% trans 'Additional street:' %}</dt>
+                <dd></dd>
+                <dt>{% trans 'Location:' %}</dt>
+                <dd></dd>
+            </fieldset>
+        </dl>
     </script>
 {% endblock %}
 
