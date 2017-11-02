@@ -1,6 +1,7 @@
 @ProfilePhotoController =
   extends: BaseController
   template: '#profile_photo_tmpl'
+  props: ['image']
   data: ->
     image: null
   methods:

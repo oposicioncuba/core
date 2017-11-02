@@ -10,13 +10,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <profile_photo></profile_photo>
+                <profile_photo
+                    :image="user.image"
+                ></profile_photo>
             </div>
             <div class="col-md-4">
-                <profile_info></profile_info>
+                <profile_info
+                    :name="user.name"
+                    :last_name="user.last_name"
+                    :birthday="user.birthday"
+                    :verified="user.verified"
+                ></profile_info>
             </div>
             <div class="col-md-4">
-                <profile_address></profile_address>
+                <profile_address :address="user.address"></profile_address>
             </div>
         </div>
     </div>
@@ -29,7 +36,8 @@
             <template v-else>
                 <div class="row">
                     <div class="col-md-12">
-                        <span class="fa fa-photo fa-5x right" aria-hidden="true"></span>
+                        <span class="fa fa-photo fa-5x right"
+                              aria-hidden="true"></span>
                         <input type="file" accept="image/*"
                                @change="uploadFile($event.target.files)"/>
                     </div>
@@ -51,21 +59,24 @@
     </script>
 
     <script id="profile_info_tmpl" language="template/vuejs">
-        <dl class="dl-horizontal">
-            <dt>{% trans 'Name' %}</dt>
-            <dd>[[ name ]]</dd>
-            <dt>{% trans 'Last name' %}</dt>
-            <dd> [[ last_name ]] </dd>
-            <dt>{% trans 'Birthday' %}</dt>
-            <dd>[[ birthday ]]</dd>
-            <dt>{% trans 'Verified' %}</dt>
-            <dd v-if="verified">
-                {% trans 'Yes' %}
-            </dd>
-            <dd v-else>
-                {% trans 'No' %}
-            </dd>
-        </dl>
+        <fieldset>
+            <legend>{% trans 'Personal information' %}</legend>
+            <dl class="dl-horizontal">
+                <dt>{% trans 'Name' %}</dt>
+                <dd>[[ name ]]</dd>
+                <dt>{% trans 'Last name' %}</dt>
+                <dd> [[ last_name ]]</dd>
+                <dt>{% trans 'Birthday' %}</dt>
+                <dd>[[ birthday ]]</dd>
+                <dt>{% trans 'Verified' %}</dt>
+                <dd v-if="verified">
+                    {% trans 'Yes' %}
+                </dd>
+                <dd v-else>
+                    {% trans 'No' %}
+                </dd>
+            </dl>
+        </fieldset>
     </script>
 
     <script id="profile_address_tmpl" language="template/vuejs">

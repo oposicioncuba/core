@@ -6,8 +6,8 @@
     'profile_photo': ProfilePhotoController
     'profile_info': ProfileInfoController
     'profile_address': ProfileAddressController
-  methods:
-    initialize: ->
-      @user = User.me()
+  created: ->
+    User.me().then (user) =>
+      @user = user[0]
 
 new Vue(ProfileController).$mount '.container'

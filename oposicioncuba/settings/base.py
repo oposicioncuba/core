@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'pipeline',
     'bootstrap3',
+    'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -225,6 +226,7 @@ PIPELINE = {
         },
         'profile': {
             'source_filenames': (
+                'coffee/models/user.js',
                 'coffee/controllers/base.js',
                 'coffee/controllers/profile/photo.js',
                 'coffee/controllers/profile/info.js',

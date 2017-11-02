@@ -15,6 +15,12 @@ class Location(MPTTModel):
         db_index=True
     )
 
+    def __str__(self):
+        if not self.is_root_node():
+            return '%s %s' % (self.name, str(self.parent))
+        else:
+            return self.name
+
 
 class Address(TimeStampedModel):
     street = models.CharField(max_length=200)
@@ -31,6 +37,9 @@ class Organization(TimeStampedModel):
     headquarter = models.ForeignKey(Address)
     leader = models.ForeignKey(User)
 
+    def __str__(self):
+        return self.name
+
 
 class Member(TimeStampedModel):
     name = models.CharField(max_length=200, null=True)
@@ -43,3 +52,5 @@ class Member(TimeStampedModel):
     address = models.ForeignKey(Address)
     organization = models.ForeignKey(Organization, null=True)
     user = models.ForeignKey(User, null=True)
+
+from . import signals #  noqa
