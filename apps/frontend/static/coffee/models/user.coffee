@@ -27,5 +27,17 @@ class @User
           resolve data
 
     promise
+  @update: (id, name, last_name, birthday, verified) ->
+      promise = new Promise (resolve) =>
+        $.ajax
+          url: "/api/me/#{id}/"
+          data:
+            name: name
+            last_name: last_name
+            birthday: birthday
+            verified: verified
+          method: 'put'
+          success: (data) =>
+            resolve data
 
-
+      promise
