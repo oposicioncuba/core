@@ -8,4 +8,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^api/', include('apps.api.urls')),
     url(r'^', include('apps.frontend.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + (
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)
+

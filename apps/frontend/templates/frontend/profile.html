@@ -11,11 +11,13 @@
         <div class="row">
             <div class="col-md-4">
                 <profile_photo
-                    :image="user.image"
+                    v-if="user"
+                    :image="image_cp"
                 ></profile_photo>
             </div>
             <div class="col-md-4">
                 <profile_info
+                    v-if="user"
                     :name="user.name"
                     :last_name="user.last_name"
                     :birthday="user.birthday"
@@ -23,7 +25,10 @@
                 ></profile_info>
             </div>
             <div class="col-md-4">
-                <profile_address :address="user.address"></profile_address>
+                <profile_address
+                    :address="user.address"
+                    v-if="user"
+                ></profile_address>
             </div>
         </div>
     </div>

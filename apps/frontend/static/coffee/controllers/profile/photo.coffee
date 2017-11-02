@@ -2,11 +2,12 @@
   extends: BaseController
   template: '#profile_photo_tmpl'
   props: ['image']
-  data: ->
-    image: null
+  computed:
+    image_cp: ->
+      @image
   methods:
     uploadFile: (files) ->
-      console.log(files)
+      User.updatePhoto(files[0])
 
     openUploadWindow: ->
       $('input[type=file]').click()

@@ -38,6 +38,7 @@ class MeSerializer(ModelSerializer):
             'last_name',
             'birthday',
             'address',
+            'photo',
         )
 
     def get_address(self, obj):
