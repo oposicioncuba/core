@@ -23,8 +23,8 @@ class @User
         cache: false
         contentType: false
         processData: false
-        success: =>
-          resolve()
+        success: (data) =>
+          resolve data
 
     promise
 

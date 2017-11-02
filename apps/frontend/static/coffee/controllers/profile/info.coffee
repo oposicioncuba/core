@@ -7,3 +7,6 @@
     'birthday',
     'verified',
   ]
+  methods:
+    edit: ->
+      alert 123

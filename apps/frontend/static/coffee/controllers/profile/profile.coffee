@@ -2,6 +2,9 @@
   extends: BaseController
   data: ->
     user: null
+  computed:
+    photo: ->
+      @user.photo
   components:
     'profile_photo': ProfilePhotoController
     'profile_info': ProfileInfoController
