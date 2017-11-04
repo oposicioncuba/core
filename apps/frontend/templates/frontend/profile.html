@@ -9,6 +9,22 @@
 {% block content %}
     <div class="container">
         <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                 <div class="row">
+                    <div class="col-md-12">
+                        <h1>{% trans 'Cuban opossition' %}</h1>
+                    </div>
+                </div>
+
+                <h3> {% trans 'Profile' %}</h3>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
             <div class="col-md-4">
                 <profile_photo
                     v-if="user"
