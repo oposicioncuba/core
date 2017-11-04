@@ -210,6 +210,13 @@ PIPELINE = {
                 'sass/main.css',
             ),
             'output_filename': 'css/libs.css'
+        },
+        'profile': {
+            'source_filenames': (
+                'node_modules/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css',  # noqa
+                'sass/main.css',
+            ),
+            'output_filename': 'css/profile.css'
         }
     },
     'JAVASCRIPT': {
@@ -224,6 +231,8 @@ PIPELINE = {
                 'node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.js',  # noqa
                 'node_modules/vue/dist/vue.js',
                 'coffee/init_bootstrap_material_design.js',
+                'node_modules/moment/moment.js',
+                'node_modules/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js',  # noqa
             ),
             'output_filename': 'js/libs.js'
         },

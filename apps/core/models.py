@@ -44,7 +44,7 @@ class Organization(TimeStampedModel):
 class Member(TimeStampedModel):
     name = models.CharField(max_length=200, null=True)
     last_name = models.CharField(max_length=200, null=True)
-    birthday = models.DateTimeField(null=True)
+    birthday = models.DateField(null=True)
     position = models.CharField(max_length=200, null=True)
     verified = models.BooleanField(default=False)
     photo = models.ImageField(upload_to='photos', null=True)

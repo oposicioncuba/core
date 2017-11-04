@@ -70,19 +70,19 @@
             <legend>{% trans 'Personal information' %}</legend>
             <dl class="dl-horizontal">
                 <dt>{% trans 'Name' %}</dt>
-                <dd v-if="read_mode">[[ name ]]</dd>
+                <dd v-if="read_mode">[[ name_property ]]</dd>
                 <dd v-else>
                     <input type="text" class="form-control" v-model="name" @blur="update()"/>
                 </dd>
                 <dt>{% trans 'Last name' %}</dt>
-                <dd v-if="read_mode">[[ last_name ]]</dd>
+                <dd v-if="read_mode">[[ last_name_property ]]</dd>
                 <dd v-else>
-                    <input type="text" class="form-control" v-model="last_name"/>
+                    <input type="text" class="form-control" v-model="last_name" @blur="update()"/>
                 </dd>
                 <dt>{% trans 'Birthday' %}</dt>
-                <dd v-if="read_mode">[[ birthday ]]</dd>
+                <dd v-if="read_mode">[[ birthday_property ]]</dd>
                 <dd v-else>
-                    <input type="text" class="form-control" v-model="birthday"/>
+                    <input type="text" class="form-control datetime" v-model="birthday" @focus="setUpDateTimePicker()"/>
                 </dd>
                 <dt>{% trans 'Verified' %}</dt>
                 <template v-if="read_mode">
@@ -121,4 +121,8 @@
 
 {% block js %}
     {% javascript 'profile' %}
+{% endblock %}
+
+{% block css %}
+    {% stylesheet 'profile' %}
 {% endblock %}
