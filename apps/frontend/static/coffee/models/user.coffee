@@ -27,7 +27,7 @@ class @User
           resolve data
 
     promise
-  @update: (id, name, last_name, birthday, verified) ->
+  @updateInfo: (id, name, last_name, birthday, verified) ->
       promise = new Promise (resolve) =>
         $.ajax
           url: "/api/me/#{id}/"
@@ -41,3 +41,11 @@ class @User
             resolve data
 
       promise
+  @loadLocations: ->
+    promise = new Promise (resolve) =>
+      $.ajax
+        url: '/me/locations'
+        success: (data) =>
+          resolve data
+
+    promise

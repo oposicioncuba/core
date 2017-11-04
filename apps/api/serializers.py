@@ -10,6 +10,7 @@ class AddressSerializer(ModelSerializer):
     class Meta:
         model = Address
         fields = (
+            'id',
             'street',
             'number',
             'additional_street',

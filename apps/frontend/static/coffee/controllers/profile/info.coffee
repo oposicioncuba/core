@@ -26,7 +26,7 @@
     edit: ->
       @read_mode = !@read_mode
     update: ->
-      User.update(@user.id, @name, @last_name, @birthday, @verified)
+      User.updateInfo(@user.id, @name, @last_name, @birthday, @verified)
     setUpDateTimePicker: ->
       if not @read_mode
         $('.datetime').bootstrapMaterialDatePicker(

@@ -207,6 +207,7 @@ PIPELINE = {
         'libs': {
             'source_filenames': (
                 'node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css',  # noqa
+                'node_modules/@riophae/vue-treeselect/dist/vue-treeselect.min.css',  # noqa
                 'sass/main.css',
             ),
             'output_filename': 'css/libs.css'
@@ -233,6 +234,7 @@ PIPELINE = {
                 'coffee/init_bootstrap_material_design.js',
                 'node_modules/moment/moment.js',
                 'node_modules/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js',  # noqa
+                'node_modules/@riophae/vue-treeselect/dist/vue-treeselect.min.js',  # noqa
             ),
             'output_filename': 'js/libs.js'
         },

@@ -120,16 +120,35 @@
 
     <script id="profile_address_tmpl" language="template/vuejs">
         <dl class="dl-horizontal">
-            <fieldset>
+            <fieldset @dblclick="edit()">
                 <legend>{% trans 'Address' %}</legend>
                 <dt>{% trans 'Street:' %}</dt>
-                <dd></dd>
+                <dd v-if="read_mode">[[ street_property ]]</dd>
+                <dd v-else>
+                    <input type="text" class="form-control" v-model="address.street"/>
+                </dd>
                 <dt>{% trans 'Number:' %}</dt>
-                <dd></dd>
+                <dd v-if="read_mode">[[ number_property ]]</dd>
+                <dd v-else>
+                    <input type="number" class="form-control" v-model="address.number"/>
+                </dd>
                 <dt>{% trans 'Additional street:' %}</dt>
-                <dd></dd>
+                <dd v-if="read_mode">[[ additional_address_property ]]</dd>
+                <dd v-else>
+                    <textarea v-model="address.additional_address" class="form-control"></textarea>
+                </dd>
                 <dt>{% trans 'Location:' %}</dt>
-                <dd></dd>
+                <dd v-if="read_mode">[[ location_property ]]</dd>
+                <dd v-else>
+                    <template>
+                        <treeselect
+                            v-model="address.location"
+                            :mutiple="false"
+                            :options="locations"
+                            :load-children-options="loadChildrenLocations"
+                        ></treeselect>
+                    </template>
+                </dd>
             </fieldset>
         </dl>
     </script>
