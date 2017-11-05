@@ -13,7 +13,7 @@
     location: ''
     read_mode: true
     locations: [
-      id: '1'
+      id: '3'
       label: 'Cuba'
       children: null
     ]
@@ -30,4 +30,11 @@
     edit: ->
       @read_mode = !@read_mode
     loadChildrenLocations: (parent) ->
-      console.log parent
+      promise = new Promise (resolve) =>
+        $.ajax
+          url: "/api/locations/#{parent.id}"
+          success: (data) =>
+            resolve data
+
+      promise.then (data) =>
+        data

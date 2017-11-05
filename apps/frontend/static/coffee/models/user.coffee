@@ -41,11 +41,3 @@ class @User
             resolve data
 
       promise
-  @loadLocations: ->
-    promise = new Promise (resolve) =>
-      $.ajax
-        url: '/me/locations'
-        success: (data) =>
-          resolve data
-
-    promise

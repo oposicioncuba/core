@@ -1,5 +1,7 @@
+from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
+from rest_framework_recursive.fields import RecursiveField
 
 from apps.core.models import Member, Address, Location
 
@@ -51,3 +53,16 @@ class MeSerializer(ModelSerializer):
             return AddressSerializer(address).data
         else:
             return ''
+
+
+class LocationSerializer(ModelSerializer):
+    label = serializers.CharField(source='name')
+    children = serializers.ListField(
+        read_only=True,
+        source='get_children',
+        child=RecursiveField()
+    )
+
+    class Meta:
+        model = Location
+        fields = ('id', 'label', 'children',)

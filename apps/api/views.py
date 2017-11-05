@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 
-from apps.api.serializers import MeSerializer
-from apps.core.models import Member
+from apps.api.serializers import MeSerializer, LocationSerializer
+from apps.core.models import Member, Location
 
 
 class MeViewSet(ModelViewSet):
@@ -11,3 +11,8 @@ class MeViewSet(ModelViewSet):
         return Member.objects.filter(
             user__username=self.request.user.username
         )
+
+
+class LocationViewSet(ModelViewSet):
+    serializer_class = LocationSerializer
+    queryset = Location.objects.all()

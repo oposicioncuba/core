@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'pipeline',
     'bootstrap3',
     'rest_framework',
+    'mptt',
 
     'django.contrib.admin',
     'django.contrib.auth',
