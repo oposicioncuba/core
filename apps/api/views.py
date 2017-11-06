@@ -1,3 +1,4 @@
+from rest_framework.generics import RetrieveAPIView
 from rest_framework.viewsets import ModelViewSet
 
 from apps.api.serializers import MeSerializer, LocationSerializer
@@ -13,6 +14,6 @@ class MeViewSet(ModelViewSet):
         )
 
 
-class LocationViewSet(ModelViewSet):
+class LocationView(RetrieveAPIView):
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
