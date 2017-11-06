@@ -16,4 +16,8 @@ class MeViewSet(ModelViewSet):
 
 class LocationView(RetrieveAPIView):
     serializer_class = LocationSerializer
-    queryset = Location.objects.all()
+
+    def get_queryset(self):
+        return Location.objects.filter(
+            id=self.kwargs['pk']
+        ).first().get_children()

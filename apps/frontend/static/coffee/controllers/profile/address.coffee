@@ -30,11 +30,8 @@
     edit: ->
       @read_mode = !@read_mode
     loadChildrenLocations: (parent) ->
-      promise = new Promise (resolve) =>
         $.ajax
           url: "/api/locations/#{parent.id}"
+          async: false
           success: (data) =>
-            resolve data
-
-      promise.then (data) =>
-        data
+            return data

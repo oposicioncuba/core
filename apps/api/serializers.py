@@ -57,12 +57,7 @@ class MeSerializer(ModelSerializer):
 
 class LocationSerializer(ModelSerializer):
     label = serializers.CharField(source='name')
-    children = serializers.ListField(
-        read_only=True,
-        source='get_children',
-        child=RecursiveField()
-    )
 
     class Meta:
         model = Location
-        fields = ('id', 'label', 'children',)
+        fields = ('id', 'label',)
