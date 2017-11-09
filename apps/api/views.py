@@ -1,4 +1,4 @@
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import ListAPIView
 from rest_framework.viewsets import ModelViewSet
 
 from apps.api.serializers import MeSerializer, LocationSerializer
@@ -14,7 +14,7 @@ class MeViewSet(ModelViewSet):
         )
 
 
-class LocationView(RetrieveAPIView):
+class LocationView(ListAPIView):
     serializer_class = LocationSerializer
 
     def get_queryset(self):
