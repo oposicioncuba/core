@@ -242,6 +242,7 @@ PIPELINE = {
         'profile': {
             'source_filenames': (
                 'coffee/models/user.js',
+                'coffee/models/location.js',
                 'coffee/controllers/base.js',
                 'coffee/controllers/profile/photo.js',
                 'coffee/controllers/profile/info.js',

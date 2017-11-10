@@ -57,7 +57,11 @@ class MeSerializer(ModelSerializer):
 
 class LocationSerializer(ModelSerializer):
     label = serializers.CharField(source='name')
+    isBranch = serializers.SerializerMethodField()
 
     class Meta:
         model = Location
-        fields = ('id', 'label',)
+        fields = ('id', 'label', 'isBranch',)
+
+    def get_isBranch(self, obj):
+        return not obj.is_leaf_node()

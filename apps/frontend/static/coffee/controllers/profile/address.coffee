@@ -29,9 +29,11 @@
   methods:
     edit: ->
       @read_mode = !@read_mode
-    loadChildrenLocations: (parent) ->
-        $.ajax
-          url: "/api/locations/#{parent.id}"
-          async: false
-          success: (data) =>
-            return data
+    loadChildrenLocations: (parent, callback) ->
+      promise = Location.get parent.id
+
+      promise.then (data) ->
+        callback null, data
+
+    updateLocation: (value) ->
+      User.updateLocation value

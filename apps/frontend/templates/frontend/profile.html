@@ -122,22 +122,22 @@
         <dl class="dl-horizontal">
             <fieldset @dblclick="edit()">
                 <legend>{% trans 'Address' %}</legend>
-                <dt>{% trans 'Street:' %}</dt>
+                <dt>{% trans 'Street' %}</dt>
                 <dd v-if="read_mode">[[ street_property ]]</dd>
                 <dd v-else>
                     <input type="text" class="form-control" v-model="address.street"/>
                 </dd>
-                <dt>{% trans 'Number:' %}</dt>
+                <dt>{% trans 'Number' %}</dt>
                 <dd v-if="read_mode">[[ number_property ]]</dd>
                 <dd v-else>
                     <input type="number" class="form-control" v-model="address.number"/>
                 </dd>
-                <dt>{% trans 'Additional street:' %}</dt>
+                <dt>{% trans 'Additional street' %}</dt>
                 <dd v-if="read_mode">[[ additional_address_property ]]</dd>
                 <dd v-else>
                     <textarea v-model="address.additional_address" class="form-control"></textarea>
                 </dd>
-                <dt>{% trans 'Location:' %}</dt>
+                <dt>{% trans 'Location' %}</dt>
                 <dd v-if="read_mode">[[ location_property ]]</dd>
                 <dd v-else>
                     <template>
@@ -146,6 +146,7 @@
                             :mutiple="false"
                             :options="locations"
                             :load-children-options="loadChildrenLocations"
+                            @input="updateLocation"
                             placeholder="{% trans 'Select a location ...' %}"
                         ></treeselect>
                     </template>
