@@ -65,3 +65,9 @@ class LocationSerializer(ModelSerializer):
 
     def get_isBranch(self, obj):
         return not obj.is_leaf_node()
+
+
+class UpdateAddressSerializer(ModelSerializer):
+    class Meta:
+        model = Address
+        fields = '__all__'

@@ -23,9 +23,9 @@ class Location(MPTTModel):
 
 
 class Address(TimeStampedModel):
-    street = models.CharField(max_length=200)
-    number = models.CharField(max_length=10)
-    additional_street = models.TextField()
+    street = models.CharField(max_length=200, null=True)
+    number = models.CharField(max_length=10, null=True)
+    additional_street = models.TextField(null=True)
 
     location = models.ForeignKey(Location)
 
@@ -51,6 +51,6 @@ class Member(TimeStampedModel):
 
     address = models.ForeignKey(Address)
     organization = models.ForeignKey(Organization, null=True)
-    user = models.ForeignKey(User, null=True)
+    user = models.ForeignKey(User, null=True, related_name='member')
 
 from . import signals #  noqa

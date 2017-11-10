@@ -1,8 +1,9 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, UpdateAPIView
 from rest_framework.viewsets import ModelViewSet
 
-from apps.api.serializers import MeSerializer, LocationSerializer
-from apps.core.models import Member, Location
+from apps.api.serializers import MeSerializer, LocationSerializer, \
+    UpdateAddressSerializer
+from apps.core.models import Member, Location, Address
 
 
 class MeViewSet(ModelViewSet):
@@ -21,3 +22,16 @@ class LocationView(ListAPIView):
         return Location.objects.filter(
             id=self.kwargs['pk']
         ).first().get_children()
+
+
+class UpdateAddressView(UpdateAPIView):
+    serializer_class = UpdateAddressSerializer
+
+    def get_queryset(self):
+        return Address.objects.filter(
+            member__user__username=self.request.user.username
+        )
+
+
+
+

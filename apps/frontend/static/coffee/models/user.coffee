@@ -45,7 +45,7 @@ class @User
   @updateLocation: (locationId) ->
     promise = new Promise (resolve) =>
       $.ajax
-        url: "/api/me/#{@id}/address/location/"
+        url: "/api/me/#{@id}/address/"
         data:
           location: locationId
         method: 'put'
