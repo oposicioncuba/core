@@ -36,4 +36,4 @@
         callback null, data
 
     updateAddress: (value) ->
-      User.updateAddress @address.name, @address.number, @address.aditional_address, value
+      User.updateAddress @address.street, @address.number, @address.additional_address, value
