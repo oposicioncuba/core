@@ -27,7 +27,7 @@ class Address(TimeStampedModel):
     number = models.CharField(max_length=10, null=True)
     additional_street = models.TextField(null=True)
 
-    location = models.ForeignKey(Location)
+    location = models.ForeignKey(Location, null=True)
 
 
 class Organization(TimeStampedModel):

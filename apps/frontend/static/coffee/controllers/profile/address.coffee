@@ -35,5 +35,5 @@
       promise.then (data) ->
         callback null, data
 
-    updateLocation: (value) ->
-      User.updateLocation value
+    updateAddress: (value) ->
+      User.updateAddress @address.name, @address.number, @address.aditional_address, value

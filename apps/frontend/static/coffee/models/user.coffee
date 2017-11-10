@@ -42,12 +42,15 @@ class @User
 
       promise
 
-  @updateLocation: (locationId) ->
+  @updateAddress: (name, number, additionalAddress, locationId) ->
     promise = new Promise (resolve) =>
       $.ajax
         url: "/api/me/#{@id}/address/"
         data:
           location: locationId
+          name: name
+          number: number
+          additional_address: additionalAddress
         method: 'put'
         success: (data) =>
           resolve data
