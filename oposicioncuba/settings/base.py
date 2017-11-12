@@ -243,13 +243,20 @@ PIPELINE = {
             'source_filenames': (
                 'coffee/models/user.js',
                 'coffee/models/location.js',
+                'coffee/models/organization.js',
+
                 'coffee/controllers/base.js',
                 'coffee/controllers/profile/photo.js',
                 'coffee/controllers/profile/info.js',
                 'coffee/controllers/profile/address.js',
+                'coffee/controllers/profile/organization_modal.js',
+                'coffee/controllers/profile/organization.js',
+                'coffee/controllers/profile/organizations.js',
                 'coffee/controllers/profile/profile.js',
             ),
             'output_filename': 'js/profile.js'
         }
     }
 }
+
+GOOGLE_MAPS_API_KEY = 'AIzaSyA_jUWWB__r7aToDCXuNDOQD9cjZgF0DIs'

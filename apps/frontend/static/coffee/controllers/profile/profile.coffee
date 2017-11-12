@@ -9,6 +9,7 @@
     'profile_photo': ProfilePhotoController
     'profile_info': ProfileInfoController
     'profile_address': ProfileAddressController
+    'profile_organizations': ProfileOrganizationsController
   created: ->
     User.me().then (user) =>
       @user = user[0]

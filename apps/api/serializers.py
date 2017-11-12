@@ -1,9 +1,24 @@
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
-from rest_framework_recursive.fields import RecursiveField
 
-from apps.core.models import Member, Address, Location
+from apps.api import google
+from apps.core.models import Member, Address, Location, Organization
+
+
+class AddressField(serializers.Field):
+    def to_representation(self, value):
+        return str(value)
+
+    def to_internal_value(self, data):
+        geocoded_address = google.geocode(data)
+        address, created = Address.objects.get_or_create(
+            street=geocoded_address['street'],
+            number=geocoded_address['number'],
+            defaults=geocoded_address
+        )
+
+        return address
 
 
 class AddressSerializer(ModelSerializer):
@@ -30,8 +45,20 @@ class AddressSerializer(ModelSerializer):
             return ''
 
 
+class OrganizationSerializer(ModelSerializer):
+    headquarter = AddressField()
+
+    class Meta:
+        model = Organization
+        fields = '__all__'
+
+    def create(self, validated_data):
+        return super().create(validated_data)
+
+
 class MeSerializer(ModelSerializer):
     address = SerializerMethodField()
+    organizations = SerializerMethodField()
 
     class Meta:
         model = Member
@@ -42,6 +69,7 @@ class MeSerializer(ModelSerializer):
             'birthday',
             'address',
             'photo',
+            'organizations',
         )
 
     def get_address(self, obj):
@@ -53,6 +81,9 @@ class MeSerializer(ModelSerializer):
             return AddressSerializer(address).data
         else:
             return ''
+
+    def get_organizations(self, obj):
+        return OrganizationSerializer(obj.organizations.all(), many=True).data
 
 
 class LocationSerializer(ModelSerializer):

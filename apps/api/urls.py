@@ -1,10 +1,16 @@
 from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 
-from apps.api.views import MeViewSet, LocationView, UpdateAddressView
+from apps.api.views import (
+    MeViewSet,
+    LocationView,
+    UpdateAddressView,
+    OrganizationViewSet,
+)
 
 router = DefaultRouter()
 router.register(r'me', MeViewSet, base_name='me')
+router.register(r'organizations', OrganizationViewSet)
 
 
 urlpatterns = [

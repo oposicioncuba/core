@@ -35,10 +35,16 @@ class Organization(TimeStampedModel):
     description = models.TextField()
 
     headquarter = models.ForeignKey(Address)
-    leader = models.ForeignKey(User)
 
     def __str__(self):
         return self.name
+
+
+class OrganizationMember(TimeStampedModel):
+    leader = models.BooleanField(default=False)
+
+    member = models.ForeignKey('Member')
+    organization = models.ForeignKey(Organization)
 
 
 class Member(TimeStampedModel):
@@ -50,7 +56,10 @@ class Member(TimeStampedModel):
     photo = models.ImageField(upload_to='photos', null=True)
 
     address = models.ForeignKey(Address)
-    organization = models.ForeignKey(Organization, null=True)
+    organizations = models.ManyToManyField(
+        Organization,
+        through='OrganizationMember'
+    )
     user = models.ForeignKey(User, null=True, related_name='member')
 
 from . import signals #  noqa

@@ -13,7 +13,7 @@
     location: ''
     read_mode: true
     locations: [
-      id: '7'
+      id: '3'
       label: 'Cuba'
       children: null
     ]

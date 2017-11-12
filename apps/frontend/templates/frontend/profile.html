@@ -44,7 +44,90 @@
                 ></profile_address>
             </div>
         </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-12">
+                <profile_organizations
+                    v-if="user"
+                    :user="user"
+                ></profile_organizations>
+            </div>
+        </div>
     </div>
+
+    <script id="profile_organizations_tmpl" language="template/vuejs">
+        <fieldset>
+            <legend>{% trans 'Organizations' %}</legend>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-default btn-primary pull-right" @click="openModal">{%  trans 'Add' %}</button>
+                </div>
+            </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{% trans 'Name' %}</th>
+                    <th>{% trans 'Headquarter' %}</th>
+                    <th>{% trans 'Role' %}</th>
+                    <th>{% trans 'Actions' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <profile_organization
+                        v-for="organization in organizations"
+                        :organization="organization"
+                        :key="organization.id"
+                    ></profile_organization>
+                </tbody>
+            </table>
+
+            <profile_organization_modal :user="user"></profile_organization_modal>
+        </fieldset>
+    </script>
+
+    <script id="profile_organization_modal" language="template/vuejs">
+        <div class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{% trans 'Add organization' %}</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form :class="{'was-validated': errors}">
+                            <div class="form-group" :class="{'has-error': errors.name}">
+                                <input type="text" class="form-control" v-model="organization.name" placeholder="{% trans 'Name' %}"/>
+                                <span class="invalid-feedback">[[ errors.name ]]</span>
+                            </div>
+                            <div class="form-group" :class="{'has-error': errors.description}">
+                                <textarea class="form-control" v-model="organization.description" placeholder="{% trans 'Description' %}"></textarea>
+                                <span class="invalid-feedback">[[ errors.description ]]</span>
+                            </div>
+                            <div class="form-group" :class="{'has-error': errors.headquarter}">
+                                <input type="text" class="form-control" v-model="organization.headquarter" placeholder="{% trans 'Headquarter' %}"/>
+                                <span class="invalid-feedback">[[ errors.headquarter ]]</span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">
+                            {% trans 'Cancel' %}
+                        </button>
+                        <button type="button" class="btn btn-primary" @click="add">
+                            {% trans 'Add' %}
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </script>
 
     <script id="profile_photo_tmpl" language="template/vuejs">
         <div>

@@ -1,0 +1,82 @@
+[
+  {
+    'address_components': [
+      {
+        'long_name': '3',
+        'short_name': '3',
+        'types': [
+          'street_number'
+        ]
+      },
+      {
+        'long_name': 'Bernhard-Weiß-Straße',
+        'short_name': 'Bernhard-Weiß-Straße',
+        'types': [
+          'route'
+        ]
+      },
+      {
+        'long_name': 'Mitte',
+        'short_name': 'Mitte',
+        'types': [
+          'political',
+          'sublocality',
+          'sublocality_level_1'
+        ]
+      },
+      {
+        'long_name': 'Berlin',
+        'short_name': 'Berlin',
+        'types': [
+          'locality',
+          'political'
+        ]
+      },
+      {
+        'long_name': 'Berlin',
+        'short_name': 'Berlin',
+        'types': [
+          'administrative_area_level_1',
+          'political'
+        ]
+      },
+      {
+        'long_name': 'Germany',
+        'short_name': 'DE',
+        'types': [
+          'country',
+          'political'
+        ]
+      },
+      {
+        'long_name': '10178',
+        'short_name': '10178',
+        'types': [
+          'postal_code'
+        ]
+      }
+    ],
+    'formatted_address': 'Bernhard-Weiß-Straße 3, 10178 Berlin, Germany',
+    'geometry': {
+      'location': {
+        'lat': 52.524105,
+        'lng': 13.4174943
+      },
+      'location_type': 'ROOFTOP',
+      'viewport': {
+        'northeast': {
+          'lat': 52.5254539802915,
+          'lng': 13.4188432802915
+        },
+        'southwest': {
+          'lat': 52.5227560197085,
+          'lng': 13.4161453197085
+        }
+      }
+    },
+    'place_id': 'ChIJue8uRxlOqEcRVk2GclPXbsU',
+    'types': [
+      'street_address'
+    ]
+  }
+]
