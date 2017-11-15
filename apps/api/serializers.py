@@ -12,10 +12,29 @@ class AddressField(serializers.Field):
 
     def to_internal_value(self, data):
         geocoded_address = google.geocode(data)
+
+        location, created = Location.objects.get_or_create(
+            name=geocoded_address['country'],
+            defaults={
+                'name': geocoded_address['country']
+            }
+        )
+
+        location, created = Location.objects.get_or_create(
+            name=geocoded_address['location'],
+            parent=location,
+            defaults={
+                'parent': location,
+                'name': geocoded_address['location']
+            }
+        )
+
         address, created = Address.objects.get_or_create(
             street=geocoded_address['street'],
             number=geocoded_address['number'],
-            defaults=geocoded_address
+            defaults={
+                'location': location
+            }
         )
 
         return address

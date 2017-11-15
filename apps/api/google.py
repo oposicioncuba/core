@@ -18,7 +18,8 @@ def geocode(address):
     search_dict = {
         'number': 'street_number',
         'street': 'route',
-        'location': 'locality'
+        'location': 'locality',
+        'country': 'country'
     }
 
     result = {}
