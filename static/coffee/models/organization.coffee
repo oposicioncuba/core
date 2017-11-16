@@ -22,15 +22,5 @@ class @Organization
     promise
 
   @addMemberToOrganization: (userId, organizationId) ->
-    promise = new Promise (resolve) ->
-      $.ajax
-        url: '/api/organization/members/'
-        method: 'post'
-        data:
-          member: userId
-          organization: organizationId
-          leader: true
-        success: =>
-          resolve data
-
-    promise
+    console.log userId
+    console.log organizationId
