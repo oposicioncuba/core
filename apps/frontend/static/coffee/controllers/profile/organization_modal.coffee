@@ -13,9 +13,8 @@
       @errors = Organization.validate @organization
 
       if not @has_errors
-        console.log @user
-
         @organization.leader = @user.id
-        Organization.add @organization
-
-        $('.modal').modal('hide')
+        Organization.add(@organization).then (data) =>
+          Organization.addMemberToOrganization(data.id, @user.id).then ->
+            $('.modal').modal('hide')
+            @emit('reloadUser')
