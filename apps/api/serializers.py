@@ -3,7 +3,8 @@ from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 
 from apps.api import google
-from apps.core.models import Member, Address, Location, Organization
+from apps.core.models import Member, Address, Location, Organization, \
+    OrganizationMember
 
 
 class AddressField(serializers.Field):
@@ -71,9 +72,6 @@ class OrganizationSerializer(ModelSerializer):
         model = Organization
         fields = '__all__'
 
-    def create(self, validated_data):
-        return super().create(validated_data)
-
 
 class MeSerializer(ModelSerializer):
     address = SerializerMethodField()
@@ -120,4 +118,10 @@ class LocationSerializer(ModelSerializer):
 class UpdateAddressSerializer(ModelSerializer):
     class Meta:
         model = Address
+        fields = '__all__'
+
+
+class OrganizationMemberSerializer(ModelSerializer):
+    class Meta:
+        model = OrganizationMember
         fields = '__all__'

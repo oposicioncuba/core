@@ -21,10 +21,10 @@ class @Organization
 
     promise
 
-  @addMemberToOrganization: (userId, organizationId) ->
+  @addMemberToOrganization: (organizationId, userId) ->
     promise = new Promise (resolve) ->
       $.ajax
-        url: '/api/organization/members/'
+        url: '/api/organizationmembers/'
         method: 'post'
         data:
           member: userId

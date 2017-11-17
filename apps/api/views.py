@@ -5,9 +5,10 @@ from apps.api.serializers import (
     MeSerializer,
     LocationSerializer,
     UpdateAddressSerializer,
-    OrganizationSerializer
-)
-from apps.core.models import Member, Location, Address, Organization
+    OrganizationSerializer,
+    OrganizationMemberSerializer)
+from apps.core.models import Member, Location, Address, Organization, \
+    OrganizationMember
 
 
 class MeViewSet(ModelViewSet):
@@ -40,3 +41,8 @@ class UpdateAddressView(UpdateAPIView):
 class OrganizationViewSet(ModelViewSet):
     serializer_class = OrganizationSerializer
     queryset = Organization.objects.all()
+
+
+class OrganizationMembersViewSet(ModelViewSet):
+    serializer_class = OrganizationMemberSerializer
+    queryset = OrganizationMember.objects.all()

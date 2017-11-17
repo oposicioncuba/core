@@ -6,11 +6,12 @@ from apps.api.views import (
     LocationView,
     UpdateAddressView,
     OrganizationViewSet,
-)
+    OrganizationMembersViewSet)
 
 router = DefaultRouter()
 router.register(r'me', MeViewSet, base_name='me')
 router.register(r'organizations', OrganizationViewSet)
+router.register(r'organizationmembers', OrganizationMembersViewSet)
 
 
 urlpatterns = [
