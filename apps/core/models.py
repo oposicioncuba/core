@@ -29,6 +29,14 @@ class Address(TimeStampedModel):
 
     location = models.ForeignKey(Location, null=True)
 
+    def __str__(self):
+        return "{:street} {:number}, {:additional_street, {:location}}".format(
+            street=self.street,
+            number=self.number,
+            additional_street=self.additional_street,
+            location=self.location
+        )
+
 
 class Organization(TimeStampedModel):
     name = models.CharField(max_length=200)

@@ -13,5 +13,8 @@
   created: ->
     User.me().then (user) =>
       @user = user[0]
+  methods:
+    reloadUser: ->
+      alert 123
 
 new Vue(ProfileController).$mount '.container'

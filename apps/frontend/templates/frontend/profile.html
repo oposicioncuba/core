@@ -7,7 +7,7 @@
 {% block title %} {% trans 'Profile' %} {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container" :reloadUser="reloadUser">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
@@ -72,7 +72,6 @@
                 <tr>
                     <th>{% trans 'Name' %}</th>
                     <th>{% trans 'Headquarter' %}</th>
-                    <th>{% trans 'Role' %}</th>
                     <th>{% trans 'Actions' %}</th>
                 </tr>
                 </thead>
@@ -236,6 +235,17 @@
                 </dd>
             </fieldset>
         </dl>
+    </script>
+
+    <script id="organization_tmpl" language="vuejs/tmpl">
+        <tr>
+            <td>[[ organization.name ]]</td>
+            <td>[[ organization.headquarter ]]</td>
+            <td>
+                <i class="fa fa-edit"></i>
+                <i class="fa fa-remove"></i>
+            </td>
+        </tr>
     </script>
 {% endblock %}
 

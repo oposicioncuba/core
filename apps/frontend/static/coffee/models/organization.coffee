@@ -30,7 +30,7 @@ class @Organization
           member: userId
           organization: organizationId
           leader: true
-        success: =>
+        success: (data) ->
           resolve data
 
     promise
