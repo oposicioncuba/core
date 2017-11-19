@@ -1,5 +1,8 @@
-import googlemaps
 from django.conf import settings
+from django.utils.translation import ugettext as _
+
+import googlemaps
+from rest_framework.exceptions import ValidationError
 
 
 def find_item(geocoded, lookup_field):
@@ -13,7 +16,12 @@ def find_item(geocoded, lookup_field):
 def geocode(address):
     gmaps = googlemaps.Client(key=settings.GOOGLE_MAPS_API_KEY)
 
-    geocoded = gmaps.geocode(address)[0]['address_components']
+    geocoded = gmaps.geocode(address)
+
+    if not geocoded:
+        raise ValidationError(_('Wrong address'))
+
+    geocoded = geocoded[0]['address_components']
 
     search_dict = {
         'number': 'street_number',

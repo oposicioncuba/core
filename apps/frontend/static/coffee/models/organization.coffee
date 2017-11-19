@@ -11,13 +11,15 @@ class @Organization
     errors
 
   @add: (organization) ->
-    promise = new Promise (resolve) ->
+    promise = new Promise (resolve, reject) ->
       $.ajax
         url: '/api/organizations/'
         method: 'post'
         data: organization
         success: (data) =>
           resolve data
+        error: (xhr) =>
+          reject xhr.responseJSON
 
     promise
 
