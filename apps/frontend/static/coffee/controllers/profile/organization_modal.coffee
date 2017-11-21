@@ -7,8 +7,7 @@
   props: ['user']
   computed:
     has_errors: ->
-      console.log @errors
-      Object.keys(JSON.stringify @errors).length > 0
+      Object.keys(@errors).length > 0
   methods:
     add: ->
       @errors = Organization.validate @organization
@@ -20,4 +19,6 @@
             $('.modal').modal('hide')
             @emit('reloadUser')
         .catch (error) =>
-          @errors['headquarter'] = error['headquarter'][0]
+          @errors = {
+            'headquarter': error['headquarter'][0]
+          }
