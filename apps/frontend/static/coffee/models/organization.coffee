@@ -36,3 +36,26 @@ class @Organization
           resolve data
 
     promise
+
+  @update: (organization) ->
+    promise = new Promise (resolve, reject) ->
+      $.ajax
+        url: "/api/organizations/#{organization.id}/"
+        data: organization
+        method: 'put'
+        success: (data) ->
+          resolve data
+        error: (xhr) ->
+          reject xhr.responseJSON
+
+    promise
+
+  @remove: (organization) ->
+    promise = new Promise (resolve) ->
+      $.ajax
+        url: "/api/organizations/#{organization.id}/"
+        method: 'delete'
+        success: ->
+          resolve()
+
+    promise

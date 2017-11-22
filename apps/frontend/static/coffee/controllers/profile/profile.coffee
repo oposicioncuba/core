@@ -11,10 +11,13 @@
     'profile_address': ProfileAddressController
     'profile_organizations': ProfileOrganizationsController
   created: ->
-    User.me().then (user) =>
-      @user = user[0]
+    @loadUser()
+
   methods:
-    reloadUser: ->
-      alert 123
+    loadUser: ->
+      console.log 3333
+
+      User.me().then (user) =>
+        @user = user[0]
 
 new Vue(ProfileController).$mount '.container'

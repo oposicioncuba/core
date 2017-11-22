@@ -7,7 +7,7 @@
 {% block title %} {% trans 'Profile' %} {% endblock %}
 
 {% block content %}
-    <div class="container" :reloadUser="reloadUser">
+    <div class="container" @reloadUser="loadUser">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
@@ -52,6 +52,7 @@
                 <profile_organizations
                     v-if="user"
                     :user="user"
+                    @reloadUser="loadUser"
                 ></profile_organizations>
             </div>
         </div>
@@ -80,11 +81,16 @@
                         v-for="organization in organizations"
                         :organization="organization"
                         :key="organization.id"
+                        @loadOrganization="loadOrganization"
+                        @reloadUser="reloadUser"
                     ></profile_organization>
                 </tbody>
             </table>
 
-            <profile_organization_modal :user="user"></profile_organization_modal>
+            <profile_organization_modal
+                :user="user"
+                ref="modal"
+            ></profile_organization_modal>
         </fieldset>
     </script>
 
@@ -93,7 +99,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">{% trans 'Add organization' %}</h4>
+                        <h4 class="modal-title">[[ operation ]] {% trans 'organization' %}</h4>
                         <button type="button" class="close" data-dismiss="modal"
                                 aria-label="Close"><span aria-hidden="true">&times;</span>
                         </button>
@@ -120,7 +126,7 @@
                             {% trans 'Cancel' %}
                         </button>
                         <button type="button" class="btn btn-primary" @click="add">
-                            {% trans 'Add' %}
+                            [[ operation ]]
                         </button>
                     </div>
                 </div><!-- /.modal-content -->
@@ -242,8 +248,8 @@
             <td>[[ organization.name ]]</td>
             <td>[[ organization.headquarter ]]</td>
             <td>
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-remove"></i>
+                <i class="fa fa-edit" @click="edit"></i>
+                <i class="fa fa-remove" @click="remove(organization)"></i>
             </td>
         </tr>
     </script>
